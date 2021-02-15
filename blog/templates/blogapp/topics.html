@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+  {% block body_block %}
+    <div class="container">
+      <h1>Topics</h1>
+      <br>
+      <div class="row mb-2">
+        {% for topic in topic_list %}
+          <div class="col-md-6">
+            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+              <div class="col p-4 d-flex flex-column position-static">
+                <h3 class="mb-0">{{ topic.topic_title }}</h3>
+                <div class="mb-1 text-muted">{{ topic.pub_date }}</div>
+                <p class="card-text mb-auto">{{ topic.topic_description }}</p>
+                <a href="{% url 'blogapp:topic' topic.id %}" class="stretched-link">Continue reading</a>
+              </div>
+              <div class="col-auto d-none d-lg-block">
+                <img width="200px" height="200px" src="{{ topic.topic_img.url }}" alt="">
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  {% endblock %}
